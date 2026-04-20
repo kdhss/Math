@@ -66,10 +66,8 @@ int main() {
     affichage();
     printf("Quel est votre choix?\n");
     scanf("%d", &reponse);
+    } 
 
-
-}  
-    
     s.point = point ;
     enregistrerScore(s);
     printf("Merci de votre visite.\n");

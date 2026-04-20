@@ -8,13 +8,13 @@ void addition(int *point){
         int nb2 = rand() % 101;
         int reponse;
         int compt = 0;
-        static char res[20];
-        printf("%d+%d\n",nb1,nb2);
-        printf("Entrez un resultat\n");
-        scanf("%d",&reponse);
-        printf("Vous avez entrez %d\n",reponse);
-        while (compt < 2){
+       
+        while (compt < 3){
             compt = compt + 1 ;
+            printf("%d+%d\n",nb1,nb2);
+            printf("Entrez un resultat\n");
+            scanf("%d",&reponse);
+            printf("Vous avez entrez %d\n",reponse);
             if ((nb1 + nb2) == reponse){
                 if ( compt == 1) {
                     *point = *point + 10 ;
@@ -24,14 +24,13 @@ void addition(int *point){
                     *point = *point + 1 ;
                 }
                 printf("Bravo !\n");
-                break;
+                return;
             }else {
-                printf("C'est faux, entrez un autre resultat\n");
-                scanf("%d",&reponse); 
-                printf("Pas Bravo !\n");
+                printf("C'est faux!\n");
         }
     }
-    if (compt >= 2){
+    if ((nb1 + nb2) != reponse) {
+            printf("Pas Bravo !\n");
             printf("Nombre d'essai d'épassé!\n");
             printf("La bonne réponse était : %d .\n", nb1+nb2);
         } 
@@ -42,13 +41,13 @@ void multiplication(int *point){
     int nb2 = rand() % 10;
     int reponse;
     int compt = 0;
-    static char res[20] ;
-    printf("%d*%d\n",nb1,nb2);
-    printf("Entrez un resultat\n");
-    scanf("%d",&reponse);
-    printf("Vous avez entrez %d\n",reponse);
-    while (compt < 2){
+    
+    while (compt < 3){
         compt = compt + 1;
+        printf("%d*%d\n",nb1,nb2);
+        printf("Entrez un resultat\n");
+        scanf("%d",&reponse);
+        printf("Vous avez entrez %d\n",reponse);
         if ((nb1 * nb2) == reponse){
             if ( compt == 1) {
                     *point = *point + 10 ;
@@ -58,13 +57,12 @@ void multiplication(int *point){
                     *point = *point + 1 ;
                 }
             printf("Bravo !\n");
-            break;
+            return;
         } else {
-            printf("C'est faux, entrez un autre resultat\n");
-            scanf("%d",&reponse);
+            printf("C'est faux!\n");
        }
     }
-    if (compt >= 2){
+    if ((nb1 * nb2) != reponse){
             printf("Pas Bravo !\n");
             printf("Nombre d'essai d'épassé!\n");
             printf("La bonne réponse était : %d.\n", nb1*nb2);
@@ -77,18 +75,18 @@ void soustraction(int *point){
     int nb;
     int reponse;
     int compt = 0;
-    static char res[20] ;
     if (nb1<nb2){
         nb = nb2;
         nb2 = nb1;
         nb1 = nb;  
         }
-    printf("%d-%d\n",nb1,nb2);
-    printf("Entrez un resultat\n");
-    scanf("%d",&reponse);
-    printf("Vous avez entrez %d\n",reponse);
-    while (compt < 2){
+    
+    while (compt < 3){
         compt = compt + 1;
+        printf("%d-%d\n",nb1,nb2);
+        printf("Entrez un resultat\n");
+        scanf("%d",&reponse);
+        printf("Vous avez entrez %d\n",reponse);
         if ((nb1-nb2) == reponse){
             if ( compt == 1) {
                         *point = *point + 10 ;
@@ -98,13 +96,12 @@ void soustraction(int *point){
                         *point = *point + 1 ;
                     }
             printf("Bravo !\n");
-            break;
+            return;
         } else{
-            printf("C'est faux, entrez un autre resultat\n");
-            scanf("%d",&reponse);
+            printf("C'est faux!\n");
         }
     }
-    if (compt >= 2){
+    if ((nb1 - nb2) != reponse){
             printf("Pas Bravo !\n");
             printf("Nombre d'essai d'épassé!\n");
             printf("La bonne réponse était : %d.\n", nb1-nb2);
@@ -134,13 +131,13 @@ void Divisions(int *point) {
     int bon_quotient = dividende / diviseur;
     int bon_reste = dividende % diviseur;
 
-    printf("Donne le quotient : ");
-    scanf("%d", &reponse_quotient);
-    printf("Donne le reste : ");
-    scanf("%d", &reponse_reste);
 
-    while (compt < 2){
+    while (compt < 3){
         compt = compt + 1;
+        printf("Donne le quotient : ");
+        scanf("%d", &reponse_quotient);
+        printf("Donne le reste : ");
+        scanf("%d", &reponse_reste);
         if ((reponse_quotient == bon_quotient) && (reponse_reste == bon_reste)) {
             if ( compt == 1) {
                         *point = *point + 10 ;
@@ -150,19 +147,14 @@ void Divisions(int *point) {
                         *point = *point + 1 ;
                     }
             printf("Bravo ! Bonne réponse\n");
-            break;
+            return;
         } else {
-            printf("Faux, réessayez!\n");
-            printf("Donne le quotient : ");
-            scanf("%d", &reponse_quotient);
-            printf("Donne le reste : ");
-            scanf("%d", &reponse_reste);
+            printf("Faux!\n");
         }
-
-        if (compt >= 2){
-            printf("Nombre d'essai d'épassé");
-            printf("La bonne réponse était : quotient = %d, reste = %d\n", bon_quotient, bon_reste);
         }  
+         if ((bon_quotient != reponse_quotient)&&(bon_reste != reponse_reste)){
+            printf("Nombre d'essai d'épassé\n");
+            printf("La bonne réponse était : quotient = %d, reste = %d\n", bon_quotient, bon_reste);
     }
 }    
 
@@ -216,74 +208,70 @@ void Nbr_mystere(int *point){
 }
 
 void operations(int *point){
-    int cible = 17;
+    int a, b, c, cible;
     int essais = 3;
+    char ops[] = {'+', '*'};
+    
+    a = (rand() % 10) + 1;
+    b = (rand() % 10) + 1;
+    c = (rand() % 10) + 1;
 
-    printf("=== Jeu du calcul ===\n");
-    printf("Objectif: %d\n", cible);
-    printf("Vous avez 3 essais.\n");
+    char secret_op1 = ops[rand() % 2];
+    char secret_op2 = ops[rand() % 2];
+
+    int r1;
+    if (secret_op1 == '+') {
+        r1= a + b ;
+    } else { 
+        (a * b);
+     }
+    if (secret_op2 == '+') {
+        cible= r1 + c ;
+     } else { 
+        cible = (r1 * c);
+     }
+
+    printf("\n============================");
+    printf("\n NOUVEL EXERCICE ");
+    printf("\n============================");
+    printf("\nChiffres a utiliser : %d, %d et %d avec deux opérateurs comportant + ou * \n", a, b, c);
+    printf("\nObjectif Cible : %d", cible);
+    printf("\n============================\n");
 
     while(essais > 0) {
-        int a, b, c;
-        char op1, op2;
+        int ua, ub, uc, ur1, resultat;
+        char uop1, uop2;
 
-        printf("\nEntrez votre calcul (ex: 2 + 5 * 7): ");
-        scanf("%d %c %d %c %d", &a, &op1, &b, &op2, &c);
 
-        int r1, resultat;
+        printf("\nEntrez votre calcul (ex: %d + %d * %d) : ", a, b, c);
+        scanf("%d %c %d %c %d", &ua, &uop1, &ub, &uop2, &uc);
+        
+        if (uop1 == '+'){
+             ur1 = ua + ub;
+            }else {
+                ur1 = ua * ub;
+            }
 
-        // premier calcul
-        switch(op1) {
-            case '+': 
-            r1 = a + b; 
-            break;
-            case '-': 
-            r1 = a - b; 
-            break;
-            case '*': 
-            r1 = a * b; 
-            break;
-            case '/': 
-            r1 = b != 0 ? a / b : 0; 
-            break;
-            default: 
-            r1 = 0;
+        if (uop2 == '+') { 
+            resultat = ur1 + uc;
+        }else { 
+            resultat = ur1 * uc;
         }
-
-        // deuxième calcul
-        switch(op2) {
-            case '+': 
-            resultat = r1 + c; 
-            break;
-            case '-': 
-            resultat = r1 - c; 
-            break;
-            case '*': 
-            resultat = r1 * c; 
-            break;
-            case '/': 
-            resultat = c != 0 ? r1 / c : 0; 
-            break;
-            default: 
-            resultat = 0;
-        }
-
-        if(resultat == cible) {
-            if (essais == 3){
-                *point = *point + 10 ;
-            } else if (essais == 2){
-                *point = *point + 5;
-            }else if (essais == 1){
-                *point = *point + 1 ;
-            } 
-            printf("Bravo ! Vous avez trouvé !\n");
-            return; // fin du jeu
-        } else {
-            essais = essais - 1;
-            printf("Faux ! Résultat = %d\n", resultat);
-            printf("Essais restants: %d\n", essais);
+        if (resultat == cible){
+        if ( essais == 3) {
+                    *point = *point + 10 ;
+                }else if (essais == 2) {
+                    *point = *point + 5;
+                } else {
+                    *point = *point + 1 ;
+                }
+                printf("Bravo ! Vous avez trouve en %d essai(s)\n", essais);
+                return;
+            }
+            else {
+                printf("C'est Faux!\n");
+                essais = essais - 1;
+            }
+        
         }
     }
-     printf("\nPerdu ! Plus d'essais.\n");
-}
-
