@@ -223,7 +223,7 @@ void operations(int *point){
     if (secret_op1 == '+') {
         r1= a + b ;
     } else { 
-        (a * b);
+        r1=(a * b);
      }
     if (secret_op2 == '+') {
         cible= r1 + c ;
@@ -265,7 +265,7 @@ void operations(int *point){
                 } else {
                     *point = *point + 1 ;
                 }
-                printf("Bravo ! Vous avez trouve en %d essai(s)\n", essais);
+                printf("Bravo ! Vous avez trouve , il vous restez %d essai(s)\n", essais);
                 return;
             }
             else {
@@ -274,4 +274,5 @@ void operations(int *point){
             }
         
         }
+        printf("La bonne réponse était %d %c %d %c %d \n", a,secret_op1, b, secret_op2, c );
     }
